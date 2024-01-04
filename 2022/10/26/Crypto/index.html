@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CTF秀 | Xzp's life</title><meta name="keywords" content="learn and practice"><meta name="author" content="徐志鹏,1207013500@qq.com"><meta name="copyright" content="徐志鹏"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Crypto密码学签到倒序 2jsfuck编码:![] + 3aaencode编码:颜表情(注意网页浏览会显示乱码,需要下载到桌面用unicode查看) 4RSA原理 已知p q e 求d利用python gmpy2 invert 求逆元函数 5RSA原理    已知p q e c q 利用题4的方法求出d 然后解出m 6Rabbit加密 不知道怎么识别和破解的 但确定这是古典密码 7ook编码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTF秀">
+<meta property="og:url" content="http://cazy111.github.io/cazy111.github.io/2022/10/26/Crypto/index.html">
+<meta property="og:site_name" content="Xzp&#39;s life">
+<meta property="og:description" content="Crypto密码学签到倒序 2jsfuck编码:![] + 3aaencode编码:颜表情(注意网页浏览会显示乱码,需要下载到桌面用unicode查看) 4RSA原理 已知p q e 求d利用python gmpy2 invert 求逆元函数 5RSA原理    已知p q e c q 利用题4的方法求出d 然后解出m 6Rabbit加密 不知道怎么识别和破解的 但确定这是古典密码 7ook编码">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://cazy111.github.io/cazy111.github.io/images/Blog/3.jpg">
+<meta property="article:published_time" content="2022-10-26T10:53:19.052Z">
+<meta property="article:modified_time" content="2022-10-26T10:53:19.052Z">
+<meta property="article:author" content="徐志鹏">
+<meta property="article:tag" content="learn and practice">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cazy111.github.io/cazy111.github.io/images/Blog/3.jpg"><link rel="shortcut icon" href="/cazy111.github.io/img/favicon.png"><link rel="canonical" href="http://cazy111.github.io/cazy111.github.io/2022/10/26/Crypto/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/cazy111.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/cazy111.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CTF秀',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-26 18:53:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><div class="aplayer" data-id="7384397660" data-server="netease" data-type="playlist" data-fixed="true" data-listFolded="false" data-order="random" data-preload="none"></div><link rel="stylesheet" href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css"><script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/cazy111.github.io/images/avatar/1.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/cazy111.github.io/archives/"><div class="headline">文章</div><div class="length-num">12</div></a></div><div class="data-item"><a href="/cazy111.github.io/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="data-item"><a href="/cazy111.github.io/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/cazy111.github.io/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/cazy111.github.io/archives/"><i class="fa-fw fas fa-folder-open"></i><span> 时间线</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/cazy111.github.io/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/cazy111.github.io/comment/"><i class="fa-fw fa fa_paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/cazy111.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/cazy111.github.io/images/Blog/3.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/cazy111.github.io/">Xzp's life</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/cazy111.github.io/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/cazy111.github.io/archives/"><i class="fa-fw fas fa-folder-open"></i><span> 时间线</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/cazy111.github.io/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/cazy111.github.io/comment/"><i class="fa-fw fa fa_paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/cazy111.github.io/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CTF秀</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-26T10:53:19.052Z" title="发表于 2022-10-26 18:53:19">2022-10-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-26T10:53:19.052Z" title="更新于 2022-10-26 18:53:19">2022-10-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">285</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CTF秀"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="密码学签到"><a href="#密码学签到" class="headerlink" title="密码学签到"></a>密码学签到</h2><p>倒序</p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>jsfuck编码:![] +</p>
+<h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><p>aaencode编码:颜表情(注意网页浏览会显示乱码,需要下载到桌面用unicode查看)</p>
+<h1 id="4"><a href="#4" class="headerlink" title="4"></a>4</h1><p>RSA原理 已知p q e 求d<br>利用python gmpy2 invert 求逆元函数</p>
+<h1 id="5"><a href="#5" class="headerlink" title="5"></a>5</h1><p>RSA原理    已知p q e c q 利用题4的方法求出d 然后解出m</p>
+<h1 id="6"><a href="#6" class="headerlink" title="6"></a>6</h1><p>Rabbit加密 不知道怎么识别和破解的 但确定这是古典密码</p>
+<h1 id="7"><a href="#7" class="headerlink" title="7"></a>7</h1><p>ook编码</p>
+<h1 id="8"><a href="#8" class="headerlink" title="8"></a>8</h1><p>brianfuck编码 跟ook一样</p>
+<h1 id="9"><a href="#9" class="headerlink" title="9"></a>9</h1><p>1.用kali暴力破解压缩包密码 教程见收藏夹。<br>2.serpent加密 找网站破解 虽然不懂原理 但是见收藏夹</p>
+<h1 id="10"><a href="#10" class="headerlink" title="10"></a>10</h1><p>奇怪编码<br>Quoted-printable</p>
+<h1 id="11"><a href="#11" class="headerlink" title="11"></a>11</h1><p>md5加密 利用网站破解</p>
+<h1 id="12"><a href="#12" class="headerlink" title="12"></a>12</h1><p>凯撒密码 左移1位</p>
+<h1 id="13"><a href="#13" class="headerlink" title="13"></a>13</h1><p>埃特巴什码解密</p>
+<h1 id="14"><a href="#14" class="headerlink" title="14"></a>14</h1><p>文件过大,txt文档最后是&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;,写脚本用base爆破。</p>
+<h1 id="15"><a href="#15" class="headerlink" title="15"></a>15</h1><p>二进制数转十六进制,十六进制转字符串</p>
+<h2 id="RSA专题"><a href="#RSA专题" class="headerlink" title="RSA专题"></a>RSA专题</h2><p>(按照解题思路分类)</p>
+<h3 id="easyrsa1"><a href="#easyrsa1" class="headerlink" title="easyrsa1"></a>easyrsa1</h3><p>n较小,暴力拆分为p、q,然后顺着RSA原理解即可。<br>最后注意将明文从数字转成长字节类型<br>from Crypto.Util.number import *<br>flag &#x3D; long_to_bytes(m)</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:1207013500@qq.com">徐志鹏</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://cazy111.github.io/cazy111.github.io/2022/10/26/Crypto/">http://cazy111.github.io/cazy111.github.io/2022/10/26/Crypto/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://cazy111.github.io/cazy111.github.io" target="_blank">Xzp's life</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/cazy111.github.io/images/Blog/3.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/cazy111.github.io/images/2.jpg" target="_blank"><img class="post-qr-code-img" src="/cazy111.github.io/images/2.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/cazy111.github.io/2022/10/26/MISC/"><img class="prev-cover" src="/cazy111.github.io/images/Blog/3.jpg" onerror="onerror=null;src='/cazy111.github.io/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Misc</div></div></a></div><div class="next-post pull-right"><a href="/cazy111.github.io/2022/04/18/%E6%91%84%E5%BD%B1%E9%9B%86/"><img class="next-cover" src="https://cazy111.oss-cn-beijing.aliyuncs.com/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2/%E6%91%84%E5%BD%B1%E9%9B%86.jpg" onerror="onerror=null;src='/cazy111.github.io/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">我的摄影集</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/cazy111.github.io/images/avatar/1.jpg" onerror="this.onerror=null;this.src='/cazy111.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">徐志鹏</div><div class="author-info__description">Move and reflect</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/cazy111.github.io/archives/"><div class="headline">文章</div><div class="length-num">12</div></a></div><div class="card-info-data-item"><a href="/cazy111.github.io/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div><div class="card-info-data-item"><a href="/cazy111.github.io/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/cazy111"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/cazy111" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/cazy111.github.io/1207013500@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to my life!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Crypto"><span class="toc-number">1.</span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AD%BE%E5%88%B0"><span class="toc-number">1.1.</span> <span class="toc-text">密码学签到</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">1.2.</span> <span class="toc-text">2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3"><span class="toc-number">2.</span> <span class="toc-text">3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4"><span class="toc-number">3.</span> <span class="toc-text">4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5"><span class="toc-number">4.</span> <span class="toc-text">5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6"><span class="toc-number">5.</span> <span class="toc-text">6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7"><span class="toc-number">6.</span> <span class="toc-text">7</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8"><span class="toc-number">7.</span> <span class="toc-text">8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9"><span class="toc-number">8.</span> <span class="toc-text">9</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10"><span class="toc-number">9.</span> <span class="toc-text">10</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11"><span class="toc-number">10.</span> <span class="toc-text">11</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12"><span class="toc-number">11.</span> <span class="toc-text">12</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13"><span class="toc-number">12.</span> <span class="toc-text">13</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14"><span class="toc-number">13.</span> <span class="toc-text">14</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15"><span class="toc-number">14.</span> <span class="toc-text">15</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RSA%E4%B8%93%E9%A2%98"><span class="toc-number">14.1.</span> <span class="toc-text">RSA专题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#easyrsa1"><span class="toc-number">14.1.1.</span> <span class="toc-text">easyrsa1</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/cazy111.github.io/2022/10/26/%E5%8F%96%E8%AF%81/" title="历年美亚比赛复盘"><img src="/cazy111.github.io/images/Blog/3.jpg" onerror="this.onerror=null;this.src='/cazy111.github.io/img/404.jpg'" alt="历年美亚比赛复盘"/></a><div class="content"><a class="title" href="/cazy111.github.io/2022/10/26/%E5%8F%96%E8%AF%81/" title="历年美亚比赛复盘">历年美亚比赛复盘</a><time datetime="2022-10-26T10:55:21.865Z" title="发表于 2022-10-26 18:55:21">2022-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/cazy111.github.io/2022/10/26/WIRESHARK/" title="无题"><img src="/cazy111.github.io/images/Blog/3.jpg" onerror="this.onerror=null;this.src='/cazy111.github.io/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/cazy111.github.io/2022/10/26/WIRESHARK/" title="无题">无题</a><time datetime="2022-10-26T10:54:10.227Z" title="发表于 2022-10-26 18:54:10">2022-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/cazy111.github.io/2022/10/26/WEB/" title="Web安全"><img src="/cazy111.github.io/images/Blog/3.jpg" onerror="this.onerror=null;this.src='/cazy111.github.io/img/404.jpg'" alt="Web安全"/></a><div class="content"><a class="title" href="/cazy111.github.io/2022/10/26/WEB/" title="Web安全">Web安全</a><time datetime="2022-10-26T10:53:54.624Z" title="发表于 2022-10-26 18:53:54">2022-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/cazy111.github.io/2022/10/26/MISC/" title="Misc"><img src="/cazy111.github.io/images/Blog/3.jpg" onerror="this.onerror=null;this.src='/cazy111.github.io/img/404.jpg'" alt="Misc"/></a><div class="content"><a class="title" href="/cazy111.github.io/2022/10/26/MISC/" title="Misc">Misc</a><time datetime="2022-10-26T10:53:33.163Z" title="发表于 2022-10-26 18:53:33">2022-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/cazy111.github.io/2022/10/26/Crypto/" title="CTF秀"><img src="/cazy111.github.io/images/Blog/3.jpg" onerror="this.onerror=null;this.src='/cazy111.github.io/img/404.jpg'" alt="CTF秀"/></a><div class="content"><a class="title" href="/cazy111.github.io/2022/10/26/Crypto/" title="CTF秀">CTF秀</a><time datetime="2022-10-26T10:53:19.052Z" title="发表于 2022-10-26 18:53:19">2022-10-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 徐志鹏</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/cazy111.github.io/js/utils.js"></script><script src="/cazy111.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/cazy111.github.io/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'XCYiC4MJYCSi2V4xMi75xynd-gzGzoHsz',
+      appKey: 'bkxSrytrlAzWXizlPhJclGnM',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="//code.tidio.co/a5mdsxtnjek0fbo9qjezzzmzopelu5gt.js" async="async"></script><script>function onTidioChatApiReady() {
+  window.tidioChatApi.hide();
+  window.tidioChatApi.on("close", function() {
+    window.tidioChatApi.hide();
+  });
+}
+if (window.tidioChatApi) {
+  window.tidioChatApi.on("ready", onTidioChatApiReady);
+} else {
+  document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+}
+
+var chatBtnFn = () => {
+  document.getElementById("chat_btn").addEventListener("click", function(){
+    window.tidioChatApi.show();
+    window.tidioChatApi.open();
+  });
+}
+chatBtnFn()
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
